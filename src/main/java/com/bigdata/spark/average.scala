@@ -1,3 +1,5 @@
+package com.bigdata.spark
+
 import java.io.{File, PrintWriter}
 
 import org.apache.spark.{SparkConf, SparkContext}
