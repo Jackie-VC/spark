@@ -15,13 +15,12 @@ object average extends App {
         .matches("\\d+"))
     var sum = lines.map(x => (x(0), Integer.parseInt(x(9)).toLong)).reduceByKey(_ + _)
     var cnt = lines.map(x => (x(0), 1.toLong)).reduceByKey(_ + _)
-//    var avg = sum.join(cnt).map(x => (x.1, x.2. 1.toFloat / x.2))
+    var avg = sum.join(cnt).map(x => (x._1, x._2._1.toFloat / x._2._2)).sortByKey()
 
     val writer = new PrintWriter(new File("output.txt"))
-//    val res = avg.collect()
-//    for (n <- res) writer.println(n.toString)
+    val res = avg.collect()
+    for (n <- res) writer.println(n.toString)
 
-    writer.print(sum.join(cnt))
     writer.close()
 
   }
